@@ -1,83 +1,138 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-<v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-flex>
+    <v-card>
+      <v-card-title> แบรนด์ </v-card-title>
+    </v-card>
+    <v-flex>
+      <v-container>
+        <v-row>
+          <v-col sm="3" v-for="item in Products" :key="item.id">
+            <ProductsProductCard @click="OpenDetail" :ProductData="item" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-flex>
+    <v-card>
+      <v-card-title> ประเภท </v-card-title>
+    </v-card>
+    <v-flex>
+      <v-container>
+        <v-row>
+          <v-col sm="3" v-for="item in Products" :key="item.id">
+            <ProductsProductCard @click="OpenDetail" :ProductData="item" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-flex>
+    <v-card> </v-card>
+    <v-card>
+      <v-card-title> สินค้าแนะนำ </v-card-title>
+    </v-card>
+    <v-flex>
+      <v-container>
+        <v-row>
+          <v-col sm="3" v-for="item in Products" :key="item.id">
+            <ProductsProductCard @click="OpenDetail" :ProductData="item" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-flex>
+  </v-flex>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
-}
+  name: "IndexPage",
+  data: () => {
+    return {
+      Products: [
+        {
+          id: 1,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 2,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 3,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 4,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 5,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 6,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 7,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 8,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 9,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+        {
+          id: 10,
+          name: "Iphone 18",
+          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
+          price: 32000,
+          qty: 254,
+          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
+        },
+      ],
+    };
+  },
+  methods: {
+    OpenDetail(count) {
+      // your code
+    },
+  },
+};
 </script>
