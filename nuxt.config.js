@@ -54,7 +54,11 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth", "@nuxtjs/proxy", "@nuxtjs/toast"],
+  toast: {
+    position: "bottom-right",
+    duration: 5000,
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -70,6 +74,7 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
+          main: colors.blue.darken3,
         },
       },
     },
