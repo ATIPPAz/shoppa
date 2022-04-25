@@ -7,7 +7,11 @@
       {{ ProductData.qty }}</v-card-text
     >
     <v-card-text> {{ ProductData.discription }} </v-card-text>
-    <v-btn>ซื้อเลย</v-btn>
+    <v-card-actions>
+      <v-btn @click="Buy" rounded outlined small class="left">
+        <v-icon>mdi-cart</v-icon>Buy
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -25,6 +29,11 @@ export default {
   },
   mounted() {
     console.log(this.ProductData);
+  },
+  methods: {
+    Buy() {
+      $toast.success("ซื้อเเล้ว");
+    },
   },
 };
 </script>
