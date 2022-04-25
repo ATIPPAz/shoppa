@@ -32,7 +32,7 @@
       <v-container>
         <v-row>
           <v-col sm="3" v-for="item in Products" :key="item.id">
-            <ProductsProductCard @click="OpenDetail" :ProductData="item" />
+            <ProductsProductCard :ProductData="item" />
           </v-col>
         </v-row>
       </v-container>
@@ -51,7 +51,7 @@ export default {
           name: "Iphone 18",
           url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
           price: 32000,
-          qty: 254,
+          qty: 5,
           discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
         },
         {
@@ -59,7 +59,7 @@ export default {
           name: "Iphone 18",
           url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
           price: 32000,
-          qty: 254,
+          qty: 1,
           discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
         },
         {
@@ -129,10 +129,6 @@ export default {
       ],
     };
   },
-  methods: {
-    OpenDetail(count) {
-      // your code
-    },
-  },
+  methods: {},
 };
 </script>

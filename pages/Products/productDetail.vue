@@ -1,21 +1,28 @@
 <template>
   <v-card>
-    <v-card-title> {{ ProductData.name }} </v-card-title>
-    <v-img :src="ProductData.url" aspect-ratio="1.5" contain></v-img>
-    <v-card-text> ราคา : {{ ProductData.Price }} </v-card-text>
+    rasdas
+    <!-- <v-card-title> {{ Product.name }} </v-card-title> -->
+    <!-- <v-img :src="Product.url" aspect-ratio="1.5" contain></v-img> -->
+    <!-- <v-card-text> ราคา : {{ Product.Price }} </v-card-text> -->
   </v-card>
 </template>
 
 <script>
 export default {
   props: {
-    ProductData: {
+    Product: {
       type: Object,
-      default: () => {},
+      default: () => null,
     },
   },
+  mounted: () => {
+    console.log("resr");
+    // console.log(this.Product);
+  },
 
-  data() {},
+  data: () => {
+    return {};
+  },
 };
 </script>
 

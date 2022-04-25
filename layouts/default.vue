@@ -2,8 +2,8 @@
   <v-app>
     <v-app-bar class="primary" fixed app>
       <v-row>
-        <v-col md="2"></v-col>
-        <v-col md="8">
+        <v-col md="2" sm="1"></v-col>
+        <v-col md="8" sm="5">
           <v-row>
             <v-col md="2"> logo </v-col>
             <v-col md="7">
@@ -31,7 +31,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col md="2"></v-col>
+        <v-col md="2" sm="1"></v-col>
       </v-row>
     </v-app-bar>
     <v-main>
