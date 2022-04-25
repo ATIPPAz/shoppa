@@ -54,8 +54,11 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
-
+  modules: ["@nuxtjs/toast"],
+  toast: {
+    position: "bottom-right",
+    duration: 5000,
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
