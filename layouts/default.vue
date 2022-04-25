@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar class="primary" fixed app>
+    <v-app-bar fixed app>
       <v-row>
         <v-col md="2"></v-col>
         <v-col md="8">
@@ -9,18 +9,18 @@
             <v-col md="7">
               <v-text-field />
             </v-col>
-            <v-col md="1.5">
-              <v-btn @click="login = !login" :to="{ name: 'register' }">
+            <v-col md="1">
+              <v-btn :to="{ name: 'register' }">
                 register
                 <v-icon> mdi-register </v-icon>
               </v-btn>
             </v-col>
-            <v-col md="1.5">
+            <v-col md="1">
               <v-btn>
                 logout
                 <v-icon> mdi-logout </v-icon>
               </v-btn>
-              <v-btn v-show="!login">
+              <v-btn v-show="false">
                 login
                 <v-icon> mdi-login </v-icon>
               </v-btn>
@@ -52,10 +52,5 @@
 <script>
 export default {
   name: "DefaultLayout",
-  data: () => {
-    return {
-      login: false,
-    };
-  },
 };
 </script>

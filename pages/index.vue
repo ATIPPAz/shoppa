@@ -31,7 +31,7 @@
     <v-flex>
       <v-container>
         <v-row>
-          <v-col sm="3" xs="12" v-for="item in Products" :key="item.id">
+          <v-col sm="3" v-for="item in Products" :key="item.id">
             <ProductsProductCard @click="OpenDetail" :ProductData="item" />
           </v-col>
         </v-row>
