@@ -153,33 +153,34 @@ export default {
       console.log(evt);
       if (!evt.added) {
         console.log("ไม่ได้ใส่");
-
         return;
       }
     },
     cloneDog(prop) {
       console.log(this.cart);
       console.log(this.Products);
-
-      if (prop.qty <= 0) {
-        this.$toast.error("จำนวนสินค้าไม่พอ");
-        return;
-      }
-      prop.qty -= 1;
       console.log(prop);
-      this.cart.map((item) => {
-        if (item.id === prop.id) {
-          item.qty += 1;
+      let canadd = true;
+      if (!(prop.qty <= 0)) {
+        this.cart.map((item) => {
+          if (item.id === prop.id) {
+            item.qty += 1;
+            prop.qty -= 1;
+            canadd = false;
+          }
+        });
+        if (canadd) {
+          prop.qty -= 1;
+          return {
+            id: prop.id,
+            name: prop.name,
+            url: prop.url,
+            price: prop.price,
+            qty: 1,
+            discription: prop.discription,
+          };
         }
-      });
-      return {
-        id: prop.id,
-        name: prop.name,
-        url: prop.url,
-        price: prop.price,
-        qty: 1,
-        discription: prop.discription,
-      };
+      }
     },
   },
 };

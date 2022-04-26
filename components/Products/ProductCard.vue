@@ -26,8 +26,10 @@
         outlined
         small
         align-self="end"
+        :disabled="ProductData.qty <= 0"
       >
-        <v-icon>mdi-cart</v-icon>Buy
+        <v-icon v-show="ProductData.qty > 0">mdi-cart</v-icon
+        >{{ ProductData.qty > 0 ? "Buy" : "Sold Out" }}
       </v-btn>
       <v-spacer></v-spacer>
 
