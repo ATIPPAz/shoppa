@@ -1,9 +1,19 @@
 <template>
-  <v-card @click.stop="OpenDetail(ProductData)">
-    <v-img :src="ProductData.url" height="200px"></v-img>
-    <v-card-title> {{ ProductData.name }} </v-card-title>
+  <v-card>
+    <v-img
+      :lazy-src="ProductData.url"
+      aspect-ratio="1"
+      class="grey lighten-2"
+      :src="ProductData.url"
+      height="200px"
+      @click.stop="OpenDetail(ProductData)"
+    >
+    </v-img>
+    <v-card-title @click.stop="OpenDetail(ProductData)">
+      {{ ProductData.name }}
+    </v-card-title>
 
-    <v-card-text>
+    <v-card-text @click.stop="OpenDetail(ProductData)">
       ราคา : {{ ProductData.price }} <v-spacer /> มีจำนวน :{{
         ProductData.qty
       }}</v-card-text
