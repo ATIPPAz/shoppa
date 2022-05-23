@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     async Buy(item) {
-      if (item.qty <= 0) {
+      if (item.ProdQty <= 0) {
         this.$toast.error("สินค้าหมดเเล้ว");
         return;
       }
@@ -79,7 +79,7 @@ export default {
       this.$toast.success("กำลังจัดซื้อ");
       await setTimeout(() => {
         this.loading = false;
-        item.qty = item.qty - 1;
+        item.ProdQty = item.ProdQty - 1;
         this.$toast.success("ซื้อเเล้ว");
       }, 5000);
     },
