@@ -1,21 +1,21 @@
 <template>
   <v-card>
     <v-img
-      :lazy-src="ProductData.url"
+      :lazy-src="ProductData.ProdImage"
       aspect-ratio="1"
       class="grey lighten-2"
-      :src="ProductData.url"
+      :src="ProductData.ProdImage"
       height="200px"
       @click.stop="OpenDetail(ProductData)"
     >
     </v-img>
     <v-card-title @click.stop="OpenDetail(ProductData)">
-      {{ ProductData.name }}
+      {{ ProductData.ProdName }}
     </v-card-title>
 
     <v-card-text @click.stop="OpenDetail(ProductData)">
-      ราคา : {{ ProductData.price }} <v-spacer /> มีจำนวน :{{
-        ProductData.qty
+      ราคา : {{ ProductData.ProdPrice }} <v-spacer /> มีจำนวน :{{
+        ProductData.ProdQty
       }}</v-card-text
     >
     <v-card-actions>
@@ -26,13 +26,13 @@
         outlined
         small
         align-self="end"
-        :disabled="ProductData.qty <= 0"
+        :disabled="ProductData.ProdQty <= 0"
       >
-        <v-icon v-show="ProductData.qty > 0">mdi-cart</v-icon
-        >{{ ProductData.qty > 0 ? "Buy" : "Sold Out" }}
+        <v-icon v-show="ProductData.ProdQty > 0">mdi-cart</v-icon
+        >{{ ProductData.ProdQty > 0 ? "Buy" : "Sold Out" }}
       </v-btn>
       <v-spacer></v-spacer>
-
+      รายละเอียดสินค้า
       <v-btn icon @click="show = !show">
         <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
       </v-btn>
@@ -42,7 +42,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          {{ ProductData.discription }}
+          {{ ProductData.ProdDest }}
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -62,6 +62,8 @@ export default {
     return {
       loading: false,
       show: false,
+      productUrl:
+        "https://drive.google.com/uc?export=view&id=1H2PKMba4KDO10XQCQl-g9GZyEOoSAbcs",
     };
   },
   mounted() {

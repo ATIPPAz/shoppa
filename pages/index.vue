@@ -134,6 +134,16 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    async GetData() {
+      const res = await this.$axios.$get("/products");
+      console.log(res);
+      this.Products = res;
+      this.$toast.error("sds");
+    },
+  },
+  mounted() {
+    this.GetData();
+  },
 };
 </script>

@@ -27,8 +27,9 @@ export default {
   axios: {
     // baseURL: process.env.BASE_URL // Used as fallback if no runtime config is provided
     // credentials: true
-    prefix: "/api",
-    proxy: true,
+    baseURL: "http://localhost:5000/api",
+    // prefix: "/api",
+    // proxy: true,
   },
 
   proxy: {
@@ -54,7 +55,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/toast"],
+  modules: ["@nuxtjs/toast", "@nuxtjs/axios"],
   toast: {
     position: "bottom-right",
     duration: 5000,

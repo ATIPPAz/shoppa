@@ -44,8 +44,6 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
-
 export default {
   components: {
     draggable,
@@ -156,6 +154,7 @@ export default {
         return;
       }
     },
+
     cloneDog(prop) {
       console.log(this.cart);
       console.log(this.Products);
@@ -183,7 +182,19 @@ export default {
       }
     },
   },
+  head() {
+    return {
+      title: "Receipt",
+    };
+  },
 };
 </script>
 
 <style></style>
+<router-link
+  :to="{ name: 'warehouse-receipt-slug', params: { slug: parseInt(item.id) } }"
+>
+              <v-btn color="primary" :disabled="loading" small>
+                เพิ่มเติม
+              </v-btn>
+            </router-link>
