@@ -27,7 +27,7 @@ export default {
   axios: {
     // baseURL: process.env.BASE_URL // Used as fallback if no runtime config is provided
     // credentials: true
-    baseURL: "https://localhost:5000/api",
+    baseURL: "https://7896-110-168-54-194.ap.ngrok.io/api",
     // prefix: "/api",
     // proxy: true,
   },
