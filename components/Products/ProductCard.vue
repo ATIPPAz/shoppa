@@ -9,7 +9,6 @@
       <v-img
         :lazy-src="NoImg"
         aspect-ratio="1"
-        class="grey lighten-2"
         :src="ProductData.ProdImage ? ProductData.ProdImage : NoImg"
         height="200px"
       >

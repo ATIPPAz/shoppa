@@ -25,7 +25,7 @@
               outline
               title
               elevation="0"
-              class="grey lighten-2 pa-2 ma-3"
+              class="grey lighten-4 pa-2 ma-3"
             >
               มีจำนวน {{ Product.ProdQty }} ชิ้น<br />
               ราคา {{ Product.ProdPrice }} บาทต่อชิ้น
@@ -66,7 +66,7 @@
                 text
                 @click="checklogin()"
               >
-                เพิ่มในตะกร้า
+                ซื้อสินค้า
               </v-btn>
             </v-card-actions>
           </v-card>

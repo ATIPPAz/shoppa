@@ -3,10 +3,10 @@
     <v-img
       :lazy-src="NoImg"
       aspect-ratio="1"
-      class="grey lighten-2"
       :src="TypeData.TypeImage ? TypeData.TypeImage : NoImg"
     >
     </v-img>
+
     <v-card-title class="text-caption font-weight-medium">
       {{ TypeData.TypeName }}
     </v-card-title>
