@@ -1,31 +1,31 @@
 <template>
   <v-flex>
-    <v-card>
+    <v-card class="mx-3" outlined tile>
       <v-card-title> แบรนด์ </v-card-title>
     </v-card>
     <v-flex>
       <v-container>
         <v-row>
-          <v-col sm="3" v-for="item in Products" :key="item.id">
-            <ProductsProductCard @click="OpenDetail" :ProductData="item" />
+          <v-col sm="3" v-for="item in Products" :key="item.ID">
+            <ProductsProductCard class="fill-height" :ProductData="item" />
           </v-col>
         </v-row>
       </v-container>
     </v-flex>
-    <v-card>
+    <v-card class="mx-3" outlined tile>
       <v-card-title> ประเภท </v-card-title>
     </v-card>
     <v-flex>
       <v-container>
         <v-row>
-          <v-col sm="3" v-for="item in Products" :key="item.id">
-            <ProductsProductCard @click="OpenDetail" :ProductData="item" />
+          <v-col sm="3" v-for="item in Products" :key="item.ID">
+            <ProductsProductCard :ProductData="item" />
           </v-col>
         </v-row>
       </v-container>
     </v-flex>
     <v-card> </v-card>
-    <v-card>
+    <v-card class="mx-3" outlined tile>
       <v-card-title> สินค้าแนะนำ </v-card-title>
     </v-card>
     <v-flex>
@@ -35,7 +35,7 @@
             class="d-flex child-flex"
             cols="3"
             v-for="item in Products"
-            :key="item.id"
+            :key="item.ID"
           >
             <ProductsProductCard :ProductData="item" />
           </v-col>
@@ -136,9 +136,10 @@ export default {
   },
   methods: {
     async GetData() {
-      const res = await this.$axios.$get("/products");
+      const res = await this.$axios.$get("/Products");
       console.log(res);
       this.Products = res;
+      console.warn(this.Products);
       this.$toast.error("sds");
     },
   },

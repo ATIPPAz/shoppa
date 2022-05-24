@@ -10,21 +10,17 @@
               <v-text-field />
             </v-col>
             <v-col md="1.5">
-              <v-btn
-                v-show="!login"
-                @click="login = !login"
-                :to="{ name: 'register' }"
-              >
+              <v-btn v-show="!login" @click="Register()">
                 register
                 <v-icon> mdi-register </v-icon>
               </v-btn>
             </v-col>
             <v-col md="1.5">
-              <v-btn @click="login = !login" v-show="login">
+              <v-btn @click="Logout" v-show="login">
                 logout
                 <v-icon> mdi-logout </v-icon>
               </v-btn>
-              <v-btn @click="login = !login" v-show="!login">
+              <v-btn @click="Login()" v-show="!login">
                 login
                 <v-icon> mdi-login </v-icon>
               </v-btn>
@@ -35,6 +31,8 @@
       </v-row>
     </v-app-bar>
     <v-main>
+      <!-- <v-main class="grey lighten-4"> -->
+
       <v-container>
         <v-app class="my-2 mx-15">
           <Nuxt />
@@ -58,8 +56,43 @@ export default {
   name: "DefaultLayout",
   data: () => {
     return {
-      login: false,
+      login: localStorage.getItem("AuthID") == null ? false : true,
     };
+  },
+  methods: {
+    async Register() {
+      this.login = !this.login;
+      const res = await this.$axios.$post("/User/Register", {
+        name: "atip",
+        username: "atippa",
+      });
+      console.log(res);
+      //localStorage.setItem("authToken", token)  localStorage.getItem("userDetails");
+      //:to="{ name: 'register' }
+    },
+    async Login() {
+      this.login = !this.login;
+      const res = await this.$axios.$post("/User/Login", {
+        username: "Atip",
+        password: "1234",
+      });
+      if (res.length > 0) {
+        res.forEach((element) => {
+          localStorage.setItem("AuthID", element.CustID);
+          localStorage.setItem("UserName", element.CustUsername);
+        });
+        this.$toast.success("Login Success");
+      } else {
+        this.$toast.error("Login failed");
+      }
+      //localStorage.setItem("authToken", token)  localStorage.getItem("userDetails");
+      //:to="{ name: 'register' }
+    },
+    Logout() {
+      localStorage.removeItem("AuthID");
+      localStorage.removeItem("UserName");
+      this.login = !this.login;
+    },
   },
 };
 </script>

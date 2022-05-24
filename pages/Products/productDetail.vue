@@ -1,148 +1,77 @@
 <template>
-  <v-card>
-    <div class="row">
-      <div class="col-3">
-        <h3>Draggable 1</h3>
-        <draggable
-          class="dragArea list-group"
-          :list="Products"
-          :group="{ name: 'people', pull: 'clone', put: false }"
-          :clone="cloneDog"
-          @change="log"
-        >
-          <div
-            class="list-group-item"
-            v-for="element in Products"
-            :key="element.id"
-          >
-            <ProductsProductCard :ProductData="element" />
-          </div>
-        </draggable>
-      </div>
-
-      <div class="col-3">
-        <h3>Draggable 2</h3>
-        <draggable
-          class="dragArea list-group"
-          :list="cart"
-          group="people"
-          @change="log"
-        >
-          <div
-            class="list-group-item"
-            v-for="element in cart"
-            :key="element.id"
-          >
-            <div v-if="element">
-              <ProductsProductCard :ProductData="element" />
-            </div>
-          </div>
-        </draggable>
-      </div>
-    </div>
-  </v-card>
+  <v-flex>
+    <v-container>
+      <v-row no-gutters class="pl-5 pt-5 pb-5 pr-5 grey lighten-5">
+        <v-col cols="12" sm="4">
+          <v-card class="pa-2 mr-5" outlined tile>
+            <v-img
+              :lazy-src="Product.ProdImage"
+              aspect-ratio="1"
+              class="grey lighten-2 fill-height"
+              :src="Product.ProdImage"
+            >
+            </v-img>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="8">
+          <v-card class="pa-2 ml-5" height="100%" outlined tile>
+            <v-card-title>
+              {{ Product.ProdName }}
+            </v-card-title>
+            <v-card-subtitle>
+              {{ Product.ProdDest }}
+            </v-card-subtitle>
+            <v-flex class="grey lighten-2">
+              มีจำนวน {{ Product.ProdQty }} <br />
+              ราคา{{ Product.ProdPrice }}</v-flex
+            >
+            <v-card-actions>
+              <v-btn
+                color="primary"
+                class="white--text"
+                dark
+                text
+                @click="addToCart(Product)"
+              >
+                เพิ่มในตะกร้า
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row class="pr-2 mt-5 grey lighten-5" no-gutters>
+        <v-card class="pa-2 mr-5" outlined tile> สินค้าคล้ายกัน </v-card>
+      </v-row>
+    </v-container>
+    <!-- <v-card>
+      <v-img
+        :lazy-src="Product.ProdImage"
+        aspect-ratio="1"
+        class="grey lighten-2"
+        :src="Product.ProdImage"
+        height="1000px"
+      >
+      </v-img>
+      <v-card-title>{{ Product.ProdName }}</v-card-title>
+    </v-card> -->
+  </v-flex>
 </template>
 
 <script>
 export default {
-  components: {
-    draggable,
-  },
   props: {
-    Product: {
+    Products: {
       type: Object,
       default: () => null,
     },
   },
-  mounted: () => {
-    window.console.log("resr");
-    // console.log(this.Product);
+  mounted() {
+    this.GetDetail();
   },
 
   data: () => {
     return {
-      Products: [
-        {
-          id: 1,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 5,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 2,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 1,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 3,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 4,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 5,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 6,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 7,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 8,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 9,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-        {
-          id: 10,
-          name: "Iphone 18",
-          url: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-12-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=90&.v=1617135051000",
-          price: 32000,
-          qty: 254,
-          discription: "ราคาถูกที่สุด ใช้ง่าย ใช้ดี",
-        },
-      ],
+      Product: [],
       cart: [],
     };
   },
@@ -154,47 +83,21 @@ export default {
         return;
       }
     },
-
-    cloneDog(prop) {
-      console.log(this.cart);
-      console.log(this.Products);
-      console.log(prop);
-      let canadd = true;
-      if (!(prop.qty <= 0)) {
-        this.cart.map((item) => {
-          if (item.id === prop.id) {
-            item.qty += 1;
-            prop.qty -= 1;
-            canadd = false;
-          }
-        });
-        if (canadd) {
-          prop.qty -= 1;
-          return {
-            id: prop.id,
-            name: prop.name,
-            url: prop.url,
-            price: prop.price,
-            qty: 1,
-            discription: prop.discription,
-          };
-        }
-      }
+    async GetDetail() {
+      console.log(this.Product.ProdID);
+      const res = await this.$axios.$post("/FindOneProduct", {
+        ProID: this.Products.ProdID,
+      });
+      this.Product = res[0];
+      console.warn(res);
     },
   },
   head() {
     return {
-      title: "Receipt",
+      title: "ProductDetail",
     };
   },
 };
 </script>
 
 <style></style>
-<router-link
-  :to="{ name: 'warehouse-receipt-slug', params: { slug: parseInt(item.id) } }"
->
-              <v-btn color="primary" :disabled="loading" small>
-                เพิ่มเติม
-              </v-btn>
-            </router-link>

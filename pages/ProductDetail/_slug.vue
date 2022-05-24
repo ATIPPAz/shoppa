@@ -1,13 +1,15 @@
 <template>
   <v-flex>
-    <ReceiptDetail :id="slug" />
+    <productDetail :Products="slug" />
   </v-flex>
 </template>
 
 <script>
+import productDetail from "../Products/productDetail.vue";
 export default {
+  components: { productDetail },
   asyncData({ params }) {
-    const slug = parseInt(params.slug);
+    const slug = params.slug;
     return { slug };
   },
 
@@ -18,11 +20,3 @@ export default {
   },
 };
 </script>
-//
-<router-link
-  :to="{ name: 'warehouse-receipt-slug', params: { slug: parseInt(item.id) } }"
->
-//               <v-btn color="primary" :disabled="loading" small>
-//                 เพิ่มเติม
-//               </v-btn>
-//             </router-link>

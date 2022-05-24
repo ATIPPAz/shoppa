@@ -1,19 +1,26 @@
 <template>
-  <v-card>
-    <v-img
-      :lazy-src="ProductData.ProdImage"
-      aspect-ratio="1"
-      class="grey lighten-2"
-      :src="ProductData.ProdImage"
-      height="200px"
-      @click.stop="OpenDetail(ProductData)"
+  <v-card class="pa-2" outlined tile>
+    <router-link
+      :to="{
+        name: 'ProductDetail-slug',
+        params: { slug: ProductData },
+      }"
     >
-    </v-img>
-    <v-card-title @click.stop="OpenDetail(ProductData)">
+      <v-img
+        :lazy-src="ProductData.ProdImage"
+        aspect-ratio="1"
+        class="grey lighten-2"
+        :src="ProductData.ProdImage"
+        height="200px"
+      >
+      </v-img>
+    </router-link>
+
+    <v-card-title>
       {{ ProductData.ProdName }}
     </v-card-title>
 
-    <v-card-text @click.stop="OpenDetail(ProductData)">
+    <v-card-text>
       ราคา : {{ ProductData.ProdPrice }} <v-spacer /> มีจำนวน :{{
         ProductData.ProdQty
       }}</v-card-text
@@ -62,8 +69,6 @@ export default {
     return {
       loading: false,
       show: false,
-      productUrl:
-        "https://drive.google.com/uc?export=view&id=1H2PKMba4KDO10XQCQl-g9GZyEOoSAbcs",
     };
   },
   mounted() {
@@ -85,10 +90,11 @@ export default {
     },
     OpenDetail(item) {
       console.log("click");
+      console.warn(item);
       this.$router.push({
         path: "/Products/productDetail",
-        params: item,
       });
+      lacalStorage.setItem("productDetail", JSON.stringify(item));
     },
   },
 };
