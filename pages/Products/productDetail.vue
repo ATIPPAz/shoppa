@@ -5,10 +5,10 @@
         <v-col cols="12" sm="4">
           <v-card class="pa-2 mr-5 fill-height" outlined tile>
             <v-img
-              :lazy-src="Product.ProdImage"
+              :lazy-src="NoImg"
               aspect-ratio="1"
               class="grey lighten-2 fill-height"
-              :src="Product.ProdImage"
+              :src="Product.ProdImage ? Product.ProdImage : NoImg"
             >
             </v-img>
           </v-card>
