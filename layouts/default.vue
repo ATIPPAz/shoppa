@@ -136,9 +136,9 @@
             <v-row align="center">
               <v-col cols="6">
                 <v-text-field
-                  v-model="name"
+                  v-model="firstname"
                   :rules="nameRules"
-                  label="Name"
+                  label="FirstName"
                   required
                 ></v-text-field
               ></v-col>
