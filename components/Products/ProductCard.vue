@@ -74,21 +74,8 @@ export default {
   },
   mounted() {},
   methods: {
-    async Buy(item) {
-      if (item.ProdQty <= 0) {
-        this.$toast.error("สินค้าหมดเเล้ว");
-        return;
-      }
-      this.loading = true;
-      this.$toast.success("กำลังจัดซื้อ");
-      await setTimeout(() => {
-        this.loading = false;
-        item.ProdQty = item.ProdQty - 1;
-        this.$toast.success("ซื้อเเล้ว");
-      }, 5000);
-    },
-
     async Buy() {
+      this.loading = true;
       const qty = 1;
       const cost = parseInt(this.ProductData.ProdPrice) * qty;
       this.Opendialog = false;
@@ -99,28 +86,35 @@ export default {
         BankID: CustBank[0].BankNumber,
         Cost: cost,
       });
-      if (resPurchase) {
-        this.$toast.success("ซื้อสินค้าเรียบร้อย กำลังจัดทำออเดอร์ . . .");
-        this.ProductData.ProdQty -= 1;
-        const res = await this.$axios.$post("/Order", {
-          CustID: custID,
-          CreateDate: new Date().toISOString().slice(0, 10),
-          ShipID: "SP02",
-          OrderStatus: "OS02",
-          Annotation: "test buy",
-          ProdID: this.ProductData.ProdID,
-          ProdQty: parseInt(qty),
-          ProdCost: parseInt(this.ProductData.ProdCost),
-          ProdPrice: parseInt(this.ProductData.ProdPrice),
-        });
-        if (res) {
-          this.$toast.success("ทำออเดอร์เรียบร้อย");
+      await setTimeout(async () => {
+        if (resPurchase) {
+          const res = await this.$axios.$post("/Order", {
+            CustID: custID,
+            CreateDate: `${new Date().toISOString().slice(0, 10)}`,
+            ShipID: "SP02",
+            OrderStatus: "OS02",
+            Annotation: "test buy",
+            ProdID: this.ProductData.ProdID,
+            ProdQty: parseInt(qty),
+            ProdCost: 5,
+            ProdPrice: parseInt(this.ProductData.ProdPrice),
+          });
+          this.$toast.success("ซื้อสินค้าเรียบร้อย กำลังจัดทำออเดอร์ . . .");
+          this.ProductData.ProdQty -= 1;
+          await setTimeout(async () => {
+            if (res) {
+              this.$toast.success("ทำออเดอร์เรียบร้อย");
+            } else {
+              this.$toast.error("เกิดข้อผิดพลาด งั้นขอเงินไปก่อนนะครับ");
+            }
+            this.loading = false;
+          }, 1500);
         } else {
-          this.$toast.error("เกิดข้อผิดพลาด งั้นขอเงินไปก่อนนะครับ");
+          this.$toast.error("ซื้อสินค้าไม่ได้ เนื่องจากเงินไม่พอ");
+          this.loading = false;
         }
-      } else {
-        this.$toast.error("ซื้อสินค้าไม่ได้ เนื่องจากเงินไม่พอ");
-      }
+      }, 1500);
+
       //const makeOrder = await this.$axios.post();
       //const DateBuy = new Date().toISOString().slice(0, 10);
     },

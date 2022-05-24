@@ -32,7 +32,9 @@
       <v-container>
         <v-row>
           <v-col sm="3" v-for="item in Products" :key="item.ID">
-            <ProductsProductCard :ProductData="item" />
+            <v-flex v-if="item.ProdQty > 0 && item.ProdImage !== null">
+              <ProductsProductCard :ProductData="item" />
+            </v-flex>
           </v-col>
         </v-row>
       </v-container>
