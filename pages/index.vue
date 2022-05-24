@@ -7,7 +7,7 @@
       <v-container>
         <v-row>
           <v-col sm="3" v-for="item in Products" :key="item.ID">
-            <ProductsProductCard class="fill-height" :ProductData="item" />
+            <ProductsProductCard :ProductData="item" />
           </v-col>
         </v-row>
       </v-container>

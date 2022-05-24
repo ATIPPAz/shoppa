@@ -62,7 +62,7 @@ export default {
   methods: {
     async Register() {
       this.login = !this.login;
-      const res = await this.$axios.$post("/User/Register", {
+      const res = await this.$axios.$post("user/Register", {
         name: "atip",
         username: "atippa",
       });
@@ -72,7 +72,7 @@ export default {
     },
     async Login() {
       this.login = !this.login;
-      const res = await this.$axios.$post("/User/Login", {
+      const res = await this.$axios.$post("user/Login", {
         username: "Atip",
         password: "1234",
       });
