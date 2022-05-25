@@ -75,6 +75,10 @@ export default {
   mounted() {},
   methods: {
     async Buy() {
+      if (localStorage.getItem("AuthID") === null) {
+        this.$toast.error("กรุณาเข้าสู่ระบบก่อน");
+        return;
+      }
       this.loading = true;
       const qty = 1;
       const cost = parseInt(this.ProductData.ProdPrice) * qty;

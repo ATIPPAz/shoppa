@@ -128,6 +128,7 @@ export default {
   },
   mounted() {
     this.GetDetail();
+    console.log(this.Products);
   },
   computed: {},
 
