@@ -170,12 +170,16 @@ export default {
       this.Opendialog = false;
       const getBank = await this.$axios.$post("Customers/GetBankAccount");
       const custID = localStorage.getItem("AuthID");
+      console.log(getBank);
       const CustBank = getBank.filter((bank) => bank.CustID === custID);
+
       const resPurchase = await this.$axios.$post("/Purchase", {
         BankID: CustBank[0].BankNumber,
         Cost: cost,
       });
 
+      const t = CustBank[0].BankMoney;
+      this.$toast.success(`เหลือเงิน ${t} บาท`);
       await setTimeout(async () => {
         if (resPurchase) {
           this.$toast.success("ซื้อสินค้าเรียบร้อย กำลังจัดทำออเดอร์ . . .");
