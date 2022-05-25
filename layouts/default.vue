@@ -118,7 +118,6 @@
                   v-model="username"
                   :rules="nameRules"
                   label="UserName"
-                  required
                 ></v-text-field
               ></v-col>
               <v-col cols="6"
@@ -128,7 +127,6 @@
                   :type="show1 ? 'text' : 'password'"
                   :rules="[(v) => !!v || 'Item is required']"
                   label="Password"
-                  required
                 ></v-text-field
               ></v-col>
             </v-row>
@@ -139,7 +137,6 @@
                   v-model="firstname"
                   :rules="nameRules"
                   label="FirstName"
-                  required
                 ></v-text-field
               ></v-col>
               <v-col cols="6">
@@ -147,7 +144,6 @@
                   v-model="Lastname"
                   :rules="nameRules"
                   label="Lastname"
-                  required
                 ></v-text-field
               ></v-col>
             </v-row>
@@ -160,7 +156,6 @@
                   v-model="email"
                   :rules="emailRules"
                   label="E-mail"
-                  required
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -206,7 +201,6 @@
                     regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$',
                   }"
                   label="TelePhone"
-                  required
                 >
                 </v-text-field>
               </v-col>
@@ -262,12 +256,13 @@ export default {
       select: null,
       items: ["Item 1", "Item 2", "Item 3", "Item 4"],
       checkbox: false,
+      dateFormatted: [],
     };
   },
   methods: {
     async Register() {
       this.DialogRegister = false;
-      this.$$toast.error(
+      this.$toast.error(
         "ยังไม่ได้ทำระบบ สมัคร อยากซื้อของหรอ ลองรหัส atip / 1234 สิ"
       );
       // this.login = !this.login;
