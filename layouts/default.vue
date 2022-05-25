@@ -267,6 +267,9 @@ export default {
   methods: {
     async Register() {
       this.DialogRegister = false;
+      this.$$toast.error(
+        "ยังไม่ได้ทำระบบ สมัคร อยากซื้อของหรอ ลองรหัส atip / 1234 สิ"
+      );
       // this.login = !this.login;
       // const res = await this.$axios.$post("user/Register", {
       //   name: "atip",
