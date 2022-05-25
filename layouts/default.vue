@@ -152,11 +152,7 @@
           <v-container fluid>
             <v-row align="center">
               <v-col cols="6">
-                <v-text-field
-                  v-model="email"
-                  :rules="emailRules"
-                  label="E-mail"
-                ></v-text-field>
+                <v-text-field v-model="email" label="E-mail"></v-text-field>
               </v-col>
               <v-col cols="6">
                 <v-card elevation="0">
