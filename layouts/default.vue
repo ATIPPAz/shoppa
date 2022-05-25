@@ -87,7 +87,6 @@
             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             :type="show1 ? 'text' : 'password'"
             :items="items"
-            :rules="[(v) => !!v || 'Item is required']"
             label="Password"
             required
           ></v-text-field>
@@ -116,7 +115,6 @@
               <v-col cols="6"
                 ><v-text-field
                   v-model="username"
-                  :rules="nameRules"
                   label="UserName"
                 ></v-text-field
               ></v-col>
@@ -125,7 +123,6 @@
                   v-model="password"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="show1 ? 'text' : 'password'"
-                  :rules="[(v) => !!v || 'Item is required']"
                   label="Password"
                 ></v-text-field
               ></v-col>
@@ -135,16 +132,11 @@
               <v-col cols="6">
                 <v-text-field
                   v-model="firstname"
-                  :rules="nameRules"
                   label="FirstName"
                 ></v-text-field
               ></v-col>
               <v-col cols="6">
-                <v-text-field
-                  v-model="Lastname"
-                  :rules="nameRules"
-                  label="Lastname"
-                ></v-text-field
+                <v-text-field v-model="Lastname" label="Lastname"></v-text-field
               ></v-col>
             </v-row>
           </v-container>
@@ -173,7 +165,6 @@
                         persistent-hint
                         prepend-icon="mdi-calendar"
                         v-bind="attrs"
-                        @blur="date = parseDate(dateFormatted)"
                         v-on="on"
                       ></v-text-field>
                     </template>
@@ -189,16 +180,7 @@
           <v-container fluid>
             <v-row align="center">
               <v-col cols="6">
-                <v-text-field
-                  v-model="Phone"
-                  :rules="{
-                    required: true,
-                    digits: 7,
-                    regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$',
-                  }"
-                  label="TelePhone"
-                >
-                </v-text-field>
+                <v-text-field label="TelePhone"> </v-text-field>
               </v-col>
               <v-col cols="6">
                 <v-select v-model="gender" :items="genderitem" label="Gerder">
