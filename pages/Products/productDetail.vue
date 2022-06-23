@@ -199,7 +199,7 @@ export default {
             if (res) {
               this.$toast.success("ทำออเดอร์เรียบร้อย");
             } else {
-              this.$toast.error("เกิดข้อผิดพลาด งั้นขอเงินไปก่อนนะครับ");
+              //this.$toast.error("เกิดข้อผิดพลาด งั้นขอเงินไปก่อนนะครับ");
             }
             this.loading = false;
           }, 1500);
