@@ -56,10 +56,13 @@ export default {
     async GetProduct() {
       const res = await this.$axios.$get("/Products");
       this.Products = res;
+      this.Products = this.Products.filter((p) => p.ProdQty > 0);
     },
     async GetBrand() {
       const res = await this.$axios.$get("/Brand");
       this.ProductBrands = res;
+
+      // this.ProductBrands.map(p => p.q)
     },
     async GetType() {
       const res = await this.$axios.$get("/Type");
